@@ -23,7 +23,7 @@ class AawazLogging:
 
     #insert data in pause table
     def insert_into_play_table(self, play_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_play table are ", len(play_array) )
@@ -37,7 +37,7 @@ class AawazLogging:
 
     #insert data in pause table
     def insert_into_pause_table(self, pause_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_pause table are ", len(pause_array) )
@@ -52,7 +52,7 @@ class AawazLogging:
 
     #insert data in next table    
     def insert_into_next_table(self, next_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_next table are ", len(next_array) )
@@ -67,7 +67,7 @@ class AawazLogging:
 
     #insert data in previous table
     def insert_into_previous_table(self, previous_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_previous table are ", len(previous_array) ) 
@@ -82,7 +82,7 @@ class AawazLogging:
 
     #insert data in fast forward table
     def insert_into_ff_table( self, fast_fwd_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_fast_fwd table are ", len( fast_fwd_array ) )
@@ -97,7 +97,7 @@ class AawazLogging:
 
     #insert data in rewind table
     def insert_into_rewind_table(self, rewind_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_rewind table are ", len( rewind_array) )
@@ -112,7 +112,7 @@ class AawazLogging:
 
     #insert data in stop table
     def insert_into_stop_table(self ,stop_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_stop table are ", len(stop_array) )
@@ -127,7 +127,7 @@ class AawazLogging:
 
     #insert data in app open table
     def insert_into_app_open_table(self, app_open_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_app_open table are ", len(app_open_array) )
@@ -142,7 +142,7 @@ class AawazLogging:
 
     #insert data in device detail table
     def insert_into_device_detail_table(self, device_detail_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_device_detail table are ", len(device_detail_array) )
@@ -159,7 +159,7 @@ class AawazLogging:
     #insert data in search table
     def insert_into_search_table(self, search_array):
         
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_search table are ", len(search_array) )
@@ -175,7 +175,7 @@ class AawazLogging:
     #total data inserted in tables
     def insert_into_insert_stats_table(self, insert_stats_array):
 
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "awaaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
         self.cursor = self.db.cursor()
         
         insert_stats_sql = 'insert into logging_insert_stats(date_time, file_path, event_total_data) VALUES(%s,%s,%s)'

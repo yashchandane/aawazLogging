@@ -19,7 +19,7 @@
 --
 
 -- CREATE DATABASE IF NOT EXISTS awaaz;
-USE awaaz;
+USE aawaz;
 
 --
 -- Definition of table `analytics_app_open`
