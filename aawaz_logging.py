@@ -1,13 +1,15 @@
-import csv
 import pymysql as my
 import datetime
-import os
-from zipfile import ZipFile
-import shutil
-import sys
+import csv
+import aawaz_parse
+import init
+import unzip
 
+
+
+# Get data in database
 class AawazLogging:
-
+    
     #Array for each Table
     play_array = []    
     pause_array = []
@@ -21,23 +23,27 @@ class AawazLogging:
     search_array = []
     insert_stats_array=[]
 
-    #insert data in pause table
+    # Object for password class
+    pass_obj = aawaz_parse.Password()
+
+    # insert data in play table
     def insert_into_play_table(self, play_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        #play = self.insert_into_play_table(paswd)
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_play table are ", len(play_array) )
+        print("\nTotal numbers of record to insert in analytics_play table are ", len(play_array) )
         
         play_sql = "insert into analytics_play( date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
-             VALUES(%s, %s, %s, %s, %s, %s, %s);"   
+             VALUES(%s, %s, %s, %s, %s, %s, %s);"
         
         self.insert_db(play_sql, play_array, "analytics_play")
         play_array.clear()
         self.db.close()
 
-    #insert data in pause table
+    # insert data in pause table
     def insert_into_pause_table(self, pause_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_pause table are ", len(pause_array) )
@@ -50,9 +56,9 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in next table    
+    # insert data in next table    
     def insert_into_next_table(self, next_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_next table are ", len(next_array) )
@@ -65,9 +71,9 @@ class AawazLogging:
         self.db.close()
     
 
-    #insert data in previous table
+    # insert data in previous table
     def insert_into_previous_table(self, previous_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_previous table are ", len(previous_array) ) 
@@ -80,9 +86,9 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in fast forward table
+    # insert data in fast forward table
     def insert_into_ff_table( self, fast_fwd_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_fast_fwd table are ", len( fast_fwd_array ) )
@@ -95,9 +101,9 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in rewind table
+    # insert data in rewind table
     def insert_into_rewind_table(self, rewind_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_rewind table are ", len( rewind_array) )
@@ -110,14 +116,14 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in stop table
+    # insert data in stop table
     def insert_into_stop_table(self ,stop_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_stop table are ", len(stop_array) )
+        print("Total numbers of record to insert in analytics_stop table are ", len(stop_array))
         
-        stop_sql = "insert into analytics_stop(date_time, event_id, user_id, show_id, episode_id, time, app_platform)\
+        stop_sql = "insert into analytics_stop(date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"   
         
         self.insert_db(stop_sql ,stop_array ,"analytics_stop")
@@ -125,12 +131,12 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in app open table
+    # insert data in app open table
     def insert_into_app_open_table(self, app_open_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_app_open table are ", len(app_open_array) )
+        print("Total numbers of record to insert in analytics_app_open table are ", len(app_open_array))
         
         app_open_sql = "insert into analytics_app_open(date_time, event_id, user_id, app_open, app_platform)\
              VALUES(%s, %s, %s, %s, %s);"   
@@ -140,14 +146,14 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in device detail table
+    # insert data in device detail table
     def insert_into_device_detail_table(self, device_detail_array):
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_device_detail table are ", len(device_detail_array) )
         
-        device_detail_sql = "insert into analytics_device_detail(date_time, event_id, appid, version_code,\
+        device_detail_sql = "insert into analytics_device_detail(date_time, event_id, app_id, version_code,\
              version_name, device_name, user_id, board, brand, device, hardware, manufacturer, model, time, sdk_int, \
                  os_built_release_version, app_platform) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);"   
         
@@ -156,10 +162,9 @@ class AawazLogging:
         self.db.close()
 
 
-    #insert data in search table
+    # insert data in search table
     def insert_into_search_table(self, search_array):
-        
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         print("Total numbers of record to insert in analytics_search table are ", len(search_array) )
@@ -172,32 +177,31 @@ class AawazLogging:
         self.db.close()
 
 
-    #total data inserted in tables
+    # total data inserted in tables
     def insert_into_insert_stats_table(self, insert_stats_array):
-
-        self.db = my.connect(host = "localhost", user = "root", passwd = "root", db = "aawaz")
+        self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
         insert_stats_sql = 'insert into logging_insert_stats(date_time, file_path, event_total_data) VALUES(%s,%s,%s)'
-        inserted_rows = self.cursor.execute(insert_stats_sql, insert_stats_array)
+        inserted_row = self.cursor.execute(insert_stats_sql, insert_stats_array)
         
         self.db.commit()
         insert_stats_array.clear()
         self.db.close()
 
-    #Execution and commit of query
+    # Execution and commit of query
     def insert_db(self, sql, data, tableName):
         inserted_rows = self.cursor.executemany(sql, data)
         self.db.commit()
         
-    def main(self,path):
+    def array_append(self, path):
         
-        #Value of each event
+        # Value of each event
         PLATFORM = "android"
         PLAY_ID = "18"
         PAUSE_ID = "20"
         NEXT_ID = "21"
-        PREVIOUS_ID = "22"
+        PREVIOUS_ID = "22" 
         FAST_FWD_ID = "23"
         REWIND_ID = "24"
         STOP_ID = "25"
@@ -205,8 +209,7 @@ class AawazLogging:
         DEVICE_DETAIL_ID = "45"
         SEARCH_ID = "40"
 
-
-        #CSV file read and append in array
+        # CSV file read and append in array
         with open(path, 'r') as DataCaptured:
             DataCap = csv.reader(DataCaptured, delimiter = '^', skipinitialspace = True)
 
@@ -247,12 +250,12 @@ class AawazLogging:
         total_inserted_data = len(self.play_array) + len(self.pause_array) + len(self.next_array) + len(self.previous_array) + len(self.fast_fwd_array) + len(self.rewind_array) + len(self.stop_array) + len(self.app_open_array) + len(self.device_detail_array) + len(self.search_array)
 
         self.insert_stats_array.append(str(datetime.datetime.now()))
-        self.insert_stats_array.append(csvpath)
+        self.insert_stats_array.append(path)
         self.insert_stats_array.append(total_inserted_data)
         
-        print(self.insert_stats_array)
+        print(self.insert_stats_array,"\n")
         
-        #Calling table's function
+        # Calling table's function
         self.insert_into_play_table(self.play_array)
         
         self.insert_into_pause_table(self.pause_array)
@@ -275,68 +278,3 @@ class AawazLogging:
 
         self.insert_into_insert_stats_table(self.insert_stats_array)
 
-log_obj = AawazLogging()
-
-#UNZIP FUNCTION
-def unzip(source_filename, dest_dir):
-    with ZipFile(source_filename) as zf:
-        zf.extractall(dest_dir)
-
-dirpath = input("Enter directory path")        #ASK USER FOR DIRECTORY
-if (os.path.isdir(dirpath) == False):
-    print(dirpath + " Directory does not exist.")
-    
-#GENERATING EXTRACT PATH AND UNZIP CSV FILES
-for root, dirs, files in os.walk(dirpath):     
-    for file in files:
-        
-        if file.endswith(".zip"):
-            zippath = os.path.join(root, file)
-            print("extracting file ", zippath)
-            unzip(zippath, os.path.dirname(zippath))
-            
-            operation = input("Do you want to detete / move file \nPress D/delete to delete and M/move to move directory ? ").strip(" ")
-        
-            if(operation =="d" or operation =="D" or operation =="delete"):
-                print("Deleting compressed file: ", zippath)
-                os.remove(zippath)
-        
-            elif(operation=="m" or operation =="M" or operation =="move"):
-                destination = input("Enter destination directory").strip(" ")
-        
-                if (os.path.isdir(destination) == False):
-                    os.mkdir(destination)
-            
-                move = shutil.move(zippath, destination)
-        
-            else:
-                sys.exit()
-
-
-
-#LIST CSV FILES AND APPEND ITS DATA INTO DATABASE
-for root, dirs, files in os.walk(dirpath):
-    for file in files:
-        
-        if file.endswith(".csv"):
-            csvpath = os.path.join(root, file)
-            print("csv path to insert ", csvpath)
-            log_obj.main(csvpath)
-            
-            operationcsv = input("Do you want to detete / move file \nPress D/delete to delete and M/move to move file ? ").strip(" ")
-
-            if(operation =="d" or operation =="D" or operation =="delete"):
-                print("Deleting compressed file: ", csvpath)
-                os.remove(csvpath)
-            
-            elif(operation=="m" or operation=="M" or operation =="move"):
-                destination_csv = input("Enter destination directory").strip(" ")
-                
-                if (os.path.isdir(destination_csv) == False):
-                    os.mkdir(destination_csv)
-                
-                move = shutil.move(csvpath, destination_csv)
-
-            else:
-                sys.exit()
-            
