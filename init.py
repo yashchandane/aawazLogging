@@ -1,7 +1,6 @@
-import aawaz_parse
 import validate
 import unzip
-import aawaz_logging
+
 
 
 def main():

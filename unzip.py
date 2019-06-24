@@ -1,6 +1,5 @@
 import sys
 import os
-import glob
 from zipfile import ZipFile
 import validate
 import aawaz_logging
