@@ -15,10 +15,10 @@
 
 
 --
--- Create schema awaaz
+-- Create schema aawaz
 --
 
--- CREATE DATABASE IF NOT EXISTS awaaz;
+CREATE DATABASE IF NOT EXISTS aawaz;
 USE aawaz;
 
 --
@@ -26,11 +26,11 @@ USE aawaz;
 --
 
 CREATE TABLE `analytics_app_open` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `even_tid` varchar(45) DEFAULT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `app_open` varchar(45) NOT NULL,
-  `app_platform` varchar(45) NOT NULL
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `app_open` varchar(45) DEFAULT NULL,
+  `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,22 +46,22 @@ CREATE TABLE `analytics_app_open` (
 --
 
 CREATE TABLE `analytics_device_detail` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_time` varchar(45) DEFAULT NULL,
   `event_id` varchar(45) DEFAULT NULL,
-  `app_id` varchar(45) NOT NULL,
-  `version_code` varchar(45) NOT NULL,
-  `version_name` varchar(45) NOT NULL,
-  `device_name` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `board` varchar(45) NOT NULL DEFAULT '',
-  `brand` varchar(45) NOT NULL DEFAULT '',
-  `device` varchar(45) NOT NULL DEFAULT '',
-  `hardware` varchar(45) NOT NULL DEFAULT '',
-  `manufacturer` varchar(45) NOT NULL DEFAULT '',
-  `model` varchar(45) NOT NULL DEFAULT '',
-  `time` varchar(45) NOT NULL DEFAULT '0',
-  `sdk_int` varchar(45) NOT NULL DEFAULT '0',
-  `os_built_release_version` varchar(45) NOT NULL DEFAULT '',
+  `app_id` varchar(45) DEFAULT NULL,
+  `version_code` varchar(45) DEFAULT NULL,
+  `version_name` varchar(45) DEFAULT NULL,
+  `device_name` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `board` varchar(45) DEFAULT NULL,
+  `brand` varchar(45) DEFAULT NULL,
+  `device` varchar(45) DEFAULT NULL,
+  `hardware` varchar(45) DEFAULT NULL,
+  `manufacturer` varchar(45) DEFAULT NULL,
+  `model` varchar(45) DEFAULT NULL,
+  `time` varchar(45) DEFAULT NULL,
+  `sdk_int` varchar(45) DEFAULT NULL,
+  `os_built_release_version` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -77,14 +77,15 @@ CREATE TABLE `analytics_device_detail` (
 -- Definition of table `analytics_fast_fwd`
 --
 
+
 CREATE TABLE `analytics_fast_fwd` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_time` varchar(45) DEFAULT NULL,
   `event_id` varchar(45) DEFAULT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `show_id` varchar(45) NOT NULL DEFAULT '0',
-  `episode_id` varchar(45) NOT NULL DEFAULT '0',
-  `start_time` varchar(45) NOT NULL DEFAULT '00:00:00',
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -100,14 +101,15 @@ CREATE TABLE `analytics_fast_fwd` (
 -- Definition of table `analytics_next`
 --
 
+
 CREATE TABLE `analytics_next` (
-  `datetime` varchar(45) NOT NULL,
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL,
-  `show_id` varchar(45) NOT NULL,
-  `episode_id` varchar(45) NOT NULL,
-  `start_time` varchar(45) NOT NULL,
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -123,14 +125,15 @@ CREATE TABLE `analytics_next` (
 -- Definition of table `analytics_pause`
 --
 
+
 CREATE TABLE `analytics_pause` (
-  `datet_ime` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `show_id` varchar(45) NOT NULL DEFAULT '0',
-  `episode_id` varchar(45) NOT NULL DEFAULT '0',
-  `pause_time` varchar(45) NOT NULL DEFAULT '00:00:00',
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `pause_time` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -147,14 +150,14 @@ CREATE TABLE `analytics_pause` (
 --
 
 CREATE TABLE `analytics_play` (
-  `datetime` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `eventid` varchar(45) NOT NULL DEFAULT '0',
-  `userid` varchar(45) NOT NULL DEFAULT '',
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `showid` varchar(45) NOT NULL DEFAULT '0',
-  `episodeid` varchar(45) NOT NULL DEFAULT '0',
-  `starttime` varchar(45) NOT NULL DEFAULT '00:00:00',
-  `appplatform` varchar(45) DEFAULT NULL
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
+  `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -169,13 +172,14 @@ CREATE TABLE `analytics_play` (
 -- Definition of table `analytics_previous`
 --
 
+
 CREATE TABLE `analytics_previous` (
-  `datet_ime` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `show_id` varchar(45) NOT NULL DEFAULT '0',
-  `episode_id` varchar(45) NOT NULL DEFAULT '0',
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -191,14 +195,15 @@ CREATE TABLE `analytics_previous` (
 -- Definition of table `analytics_rewind`
 --
 
+
 CREATE TABLE `analytics_rewind` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `show_id` varchar(45) NOT NULL DEFAULT '0',
-  `episode_id` varchar(45) NOT NULL DEFAULT '0',
-  `start_time` varchar(45) NOT NULL DEFAULT '00:00:00',
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -214,15 +219,16 @@ CREATE TABLE `analytics_rewind` (
 -- Definition of table `analytics_search`
 --
 
+
 CREATE TABLE `analytics_search` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `query` varchar(145) NOT NULL DEFAULT '',
-  `no_of_show_count` varchar(45) NOT NULL DEFAULT '0',
-  `show_ids` varchar(45) NOT NULL DEFAULT '',
-  `no_of_article_count` varchar(45) NOT NULL DEFAULT '0',
-  `article_ids` varchar(45) NOT NULL DEFAULT '',
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `query` varchar(45) DEFAULT NULL,
+  `no_of_show_count` varchar(45) DEFAULT NULL,
+  `show_ids` varchar(45) DEFAULT NULL,
+  `no_of_article_count` varchar(45) DEFAULT NULL,
+  `article_ids` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -238,14 +244,15 @@ CREATE TABLE `analytics_search` (
 -- Definition of table `analytics_stop`
 --
 
+
 CREATE TABLE `analytics_stop` (
-  `date_time` varchar(45) NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `event_id` varchar(45) NOT NULL,
-  `user_id` varchar(45) NOT NULL,
-  `platform` varchar(45) NOT NULL DEFAULT '',
-  `show_id` varchar(45) NOT NULL DEFAULT '0',
-  `episode_id` varchar(45) NOT NULL DEFAULT '0',
-  `time` varchar(45) NOT NULL DEFAULT '00:00:00',
+  `date_time` varchar(45) DEFAULT NULL,
+  `event_id` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `platform` varchar(45) DEFAULT NULL,
+  `show_id` varchar(45) DEFAULT NULL,
+  `episode_id` varchar(45) DEFAULT NULL,
+  `start_time` varchar(45) DEFAULT NULL,
   `app_platform` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -261,10 +268,11 @@ CREATE TABLE `analytics_stop` (
 -- Definition of table `logging_insert_stats`
 --
 
+
 CREATE TABLE `logging_insert_stats` (
-  `date_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `file_path` varchar(200) NOT NULL,
-  `event_total_data` int(11) NOT NULL DEFAULT '0'
+  `date_time` varchar(45) DEFAULT NULL,
+  `file_path` varchar(200) DEFAULT NULL,
+  `event_total_data` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
