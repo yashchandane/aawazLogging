@@ -3,6 +3,7 @@ import os
 from zipfile import ZipFile
 import validate
 import aawaz_logging
+import stat
 
 #Unzips zip file and move or delete it
 class UnzipZip:
@@ -47,6 +48,7 @@ class UnzipZip:
 
     #Unzip function
     def unzip(self, source_filename, dest_dir):
+        os.chmod(dest_dir, stat.S_IRWXU)
         with ZipFile(source_filename) as zf:
             zf.extractall(dest_dir)
 
