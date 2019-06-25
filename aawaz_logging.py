@@ -5,8 +5,6 @@ import aawaz_parse
 import init
 import unzip
 
-
-
 # Get data in database
 class AawazLogging:
     

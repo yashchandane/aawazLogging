@@ -1,8 +1,6 @@
 import validate
 import unzip
 
-
-
 def main():
 
     validate_obj = validate.Validate()

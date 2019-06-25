@@ -2,24 +2,9 @@ import os
 import sys
 import shutil
 import stat
-import pymysql as my
-import aawaz_parse
 
 class Validate:
     def verify(self):
-        try:
-            self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
-            self.cursor = self.db.cursor()
-        
-            verify_sql = 'use aawaz'
-            execution = self.cursor.execute(verify_sql)
-        
-            self.db.commit()
-            self.db.close()
-        except:
-            print("Wrong Password")
-        finally:
-            sys.exit()
 
         if ((sys.argv[1] == "-s" or sys.argv[1] =="--source") and os.path.exists(sys.argv[2]) == True):
             print("Verified Source path\n")

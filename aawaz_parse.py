@@ -1,10 +1,25 @@
 import argparse
 import getpass
+import pymysql as my
+import sys
 
 class Password:
     def __init__(self):
         value = getpass.getpass('Database Password: ')
         self.value = value
+
+
+        try:
+            self.db = my.connect(host = "localhost", user = "root", passwd = str(value), db = "aawaz")
+            self.cursor = self.db.cursor()
+        
+            verify_sql = "use aawaz;"
+            execution = self.cursor.execute(verify_sql)
+        
+            self.db.close()
+        except Exception as e:
+            print("Wrong Password \nReason: ", e)
+            sys.exit()
 
         # Parser for commandline input
         parser = argparse.ArgumentParser(description="Enter Command line switch", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
