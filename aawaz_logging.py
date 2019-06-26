@@ -180,7 +180,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        insert_stats_sql = 'insert into logging_insert_stats(date_time, file_path, event_total_data) VALUES(%s,%s,%s)'
+        insert_stats_sql = 'insert into analytics_insert_info(date_time, file_path, event_total_data) VALUES(%s,%s,%s)'
         inserted_row = self.cursor.execute(insert_stats_sql, insert_stats_array)
         
         self.db.commit()

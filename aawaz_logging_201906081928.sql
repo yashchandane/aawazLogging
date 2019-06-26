@@ -265,22 +265,22 @@ CREATE TABLE `analytics_stop` (
 
 
 --
--- Definition of table `logging_insert_stats`
+-- Definition of table `analytics_insert_info`
 --
 
 
-CREATE TABLE `logging_insert_stats` (
+CREATE TABLE `analytics_insert_info` (
   `date_time` varchar(45) DEFAULT NULL,
   `file_path` varchar(200) DEFAULT NULL,
   `event_total_data` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `logging_insert_stats`
+-- Dumping data for table `analytics_insert_info`
 --
 
-/*!40000 ALTER TABLE `logging_insert_stats` DISABLE KEYS */;
-/*!40000 ALTER TABLE `logging_insert_stats` ENABLE KEYS */;
+/*!40000 ALTER TABLE `analytics_insert_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `analytics_insert_info` ENABLE KEYS */;
 
 
 

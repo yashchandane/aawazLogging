@@ -32,7 +32,7 @@ class Validate:
         try:
             shutil.move(source, destination)
         except:
-            print("Can't move this file\nSimilar name file already exist in the directory")
+            print("Can't move this file\nSimilar name file already exist in the directory\n")
         
 
     def delete_file(self, source):

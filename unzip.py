@@ -36,11 +36,11 @@ class UnzipZip:
                     csvpath = os.path.join(root, csv)
                     self.csvpath = csvpath
                     
+                    print("----------------------------------------------------------------------------------------\n")
                     print("CSV path to insert: ", csvpath, "\n")
                     self.log_obj.array_append(csvpath)
 
                     if(sys.argv[3] == "-m" or sys.argv[3] == "-move"):
-                        print("reached move")
                         validate.Validate.move_file(self, csvpath, sys.argv[4])
 
                     elif(sys.argv[3] == "-d" or sys.argv[3] == "-delete"):
