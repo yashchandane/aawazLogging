@@ -1,0 +1,30 @@
+select count(date_format(datetime,"%Y-%m-%d")) as total,date_format(datetime,"%Y-%m-%d") as dt,userid from analytics_app_open group by date_format(datetime,"%Y-%m-%d"),userid ;
+
+today:
+select count(date_time) from analytics_app_open where date_time >= CURDATE()
+
+sunday to c/n day:
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL DAYOFWEEK(CURDATE()-1) DAY);
+
+c/n day to c/n day-7 days:
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL 6 DAY);
+
+c/n day to c/n day-15 days:
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL 14 DAY);
+
+last 1 month:
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL 1 month);
+
+last 3 month:
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL 3 month);
+
+specific date:
+select count(date_time) from analytics_app_open where date_time = "2019-05-30"
+
+week days monday to c/n day
+select count(date_time) from analytics_app_open where date_time >= (CURDATE()-INTERVAL DAYOFWEEK(CURDATE()-2) DAY);
+
+weekend sat and sunday
+select count(date_time) from analytics_app_open where date_time between 
+(CURDATE()-INTERVAL DAYOFWEEK(CURDATE()) DAY) and (CURDATE()-INTERVAL DAYOFWEEK(CURDATE()-1) DAY);
+
