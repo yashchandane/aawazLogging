@@ -4,6 +4,7 @@ from zipfile import ZipFile
 import validate
 import aawaz_logging
 import stat
+from file_logging import logger
 
 #Unzips zip file and move or delete it
 class UnzipZip:
@@ -19,7 +20,7 @@ class UnzipZip:
                 if zip.endswith(".zip"):
                    
                     zippath = os.path.join(root, zip)
-                    print("\nExtracting file ", zippath, "\n")
+                    logger.info("\nExtracting file "+ zippath + "\n")
                     self.unzip(zippath, os.path.dirname(zippath))
                     
                     if(sys.argv[3] == "-m" or sys.argv[3] == "-move"):
@@ -36,8 +37,8 @@ class UnzipZip:
                     csvpath = os.path.join(root, csv)
                     self.csvpath = csvpath
                     
-                    print("----------------------------------------------------------------------------------------\n")
-                    print("CSV path to insert: ", csvpath, "\n")
+                    logger.info("----------------------------------------------------------------------------------------\n")
+                    logger.info("CSV path to insert: "+ csvpath + "\n")
                     self.log_obj.array_append(csvpath)
 
                     if(sys.argv[3] == "-m" or sys.argv[3] == "-move"):

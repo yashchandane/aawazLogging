@@ -4,6 +4,7 @@ import csv
 import aawaz_parse
 import init
 import unzip
+from file_logging import logger
 
 # Get data in database
 class AawazLogging:
@@ -30,7 +31,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("\nTotal numbers of record to insert in analytics_play table are ", len(play_array) )
+        logger.info("\nTotal numbers of record to insert in analytics_play table are "+ str(len(play_array)) )
         
         play_sql = "insert into analytics_play( date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"
@@ -44,7 +45,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_pause table are ", len(pause_array) )
+        logger.info("Total numbers of record to insert in analytics_pause table are "+ str(len(pause_array)) )
         
         pause_sql = "insert into analytics_pause( date_time, event_id, user_id, show_id, episode_id, pause_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"   
@@ -59,7 +60,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_next table are ", len(next_array) )
+        logger.info("Total numbers of record to insert in analytics_next table are "+ str(len(next_array)) )
         
         next_sql = "insert into analytics_next(date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"  
@@ -74,7 +75,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_previous table are ", len(previous_array) ) 
+        logger.info("Total numbers of record to insert in analytics_previous table are "+ str(len(previous_array)) ) 
         
         previous_sql = "insert into analytics_previous(date_time, event_id, user_id, show_id, episode_id, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s);"   
@@ -89,7 +90,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_fast_fwd table are ", len( fast_fwd_array ) )
+        logger.info("Total numbers of record to insert in analytics_fast_fwd table are "+ str(len( fast_fwd_array )) )
         
         fast_fwd_sql = "insert into analytics_fast_fwd(date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"   
@@ -104,7 +105,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_rewind table are ", len( rewind_array) )
+        logger.info("Total numbers of record to insert in analytics_rewind table are "+ str(len( rewind_array)) )
         
         rewind_sql = "insert into analytics_rewind(date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"   
@@ -119,7 +120,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_stop table are ", len(stop_array))
+        logger.info("Total numbers of record to insert in analytics_stop table are "+ str(len(stop_array)))
         
         stop_sql = "insert into analytics_stop(date_time, event_id, user_id, show_id, episode_id, start_time, app_platform)\
              VALUES(%s, %s, %s, %s, %s, %s, %s);"   
@@ -134,7 +135,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_app_open table are ", len(app_open_array))
+        logger.info("Total numbers of record to insert in analytics_app_open table are "+ str(len(app_open_array)))
         
         app_open_sql = "insert into analytics_app_open(date_time, event_id, user_id, app_open, app_platform)\
              VALUES(%s, %s, %s, %s, %s);"   
@@ -149,7 +150,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_device_detail table are ", len(device_detail_array) )
+        logger.info("Total numbers of record to insert in analytics_device_detail table are "+ str(len(device_detail_array)) )
         
         device_detail_sql = "insert into analytics_device_detail(date_time, event_id, app_id, version_code,\
              version_name, device_name, user_id, board, brand, device, hardware, manufacturer, model, time, sdk_int, \
@@ -165,7 +166,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        print("Total numbers of record to insert in analytics_search table are ", len(search_array) )
+        logger.info("Total numbers of record to insert in analytics_search table are "+ str(len(search_array)) )
         
         search_sql = "insert into analytics_search(date_time, event_id, user_id, query, no_of_show_count, show_ids,\
              no_of_article_count, article_ids, app_platform)VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s);"  
@@ -180,7 +181,7 @@ class AawazLogging:
         self.db = my.connect(host = "localhost", user = "root", passwd = str(self.pass_obj), db = "aawaz")
         self.cursor = self.db.cursor()
         
-        insert_stats_sql = 'insert into analytics_logging_info(date_time, file_path, event_total_data) VALUES(%s,%s,%s)'
+        insert_stats_sql = 'insert into analytics_logging_info(date_time, file_path, event_total_data) VALUES(%s,%s,%s);'
         inserted_row = self.cursor.execute(insert_stats_sql, insert_stats_array)
         
         self.db.commit()
@@ -243,7 +244,7 @@ class AawazLogging:
                     self.search_array.append(line)
                 
                 else:
-                    print("Invalid Input")
+                    logger.info("Invalid Input")
         
         total_inserted_data = len(self.play_array) + len(self.pause_array) + len(self.next_array) + len(self.previous_array) + len(self.fast_fwd_array) + len(self.rewind_array) + len(self.stop_array) + len(self.app_open_array) + len(self.device_detail_array) + len(self.search_array)
 
@@ -251,7 +252,7 @@ class AawazLogging:
         self.insert_stats_array.append(path)
         self.insert_stats_array.append(total_inserted_data)
         
-        print(self.insert_stats_array,"\n")
+        logger.info(str(self.insert_stats_array)+"\n")
         
         # Calling table's function
         self.insert_into_play_table(self.play_array)

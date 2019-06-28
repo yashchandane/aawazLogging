@@ -2,6 +2,7 @@ import argparse
 import getpass
 import pymysql as my
 import sys
+from file_logging import logger
 
 class Password:
     def __init__(self):
@@ -18,7 +19,7 @@ class Password:
         
             self.db.close()
         except Exception as e:
-            print("Wrong Password \nReason: ", e)
+            logger.exception("Wrong Password \nReason: "+ e)
             sys.exit()
 
         # Parser for commandline input
@@ -34,20 +35,20 @@ class Password:
 
 
         args = parser.parse_args()
-        print("args: ", args)
+        logger.info("args: "+ str(args))
 
         if (args.delete):
-            print("delete: ", args.delete)
+            logger.info("delete: "+ str(args.delete))
 
         elif (args.move):
-            print("move", args.move)
+            logger.info("move"+ str(args.move))
 
         else:
-            print("move or delete required")
+            logger.info("move or delete required")
 
 
         if (args.source):
-            print("source", args.source)
+            logger.info("source"+ str(args.source))
         
         
 
