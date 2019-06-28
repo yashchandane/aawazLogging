@@ -208,6 +208,8 @@ class AawazLogging:
         DEVICE_DETAIL_ID = "45"
         SEARCH_ID = "40"
 
+        '''def aawaz(array_name):
+            if(len(array_name(0))-1'''
         # CSV file read and append in array
         with open(path, 'r') as DataCaptured:
             DataCap = csv.reader(DataCaptured, delimiter = '^', skipinitialspace = True)
@@ -254,6 +256,7 @@ class AawazLogging:
         
         logger.info(str(self.insert_stats_array)+"\n")
         
+        print(self.play_array[0][-1])
         # Calling table's function
         self.insert_into_play_table(self.play_array)
         
