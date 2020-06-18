@@ -52,4 +52,3 @@ class UnzipZip:
         os.chmod(dest_dir, stat.S_IRWXU)
         with ZipFile(source_filename) as zf:
             zf.extractall(dest_dir)
-
